@@ -5,6 +5,7 @@ PROJECT_NAME="myproject"
 BUILD_SCRIPT="build.sh"
 API_KEY="some-secret-key"
 DOMAIN="mycompany.com"
+TEAM_MAIL="myteam@company"
 
 while true
 do
@@ -19,9 +20,8 @@ do
         echo ">>>> build FAILED!!!"
         curl -s --user 'api:API_KEY' \
         https://api.mailgun.net/v3/DOMAIN/messages \
-        -F from='CI SERVER <no-reply@somedomain.com>' \
-        -F to=TEAM_MAIL \
-        -F subject='[CI] BUILD FAILED!' \
+        -F from='CI SERVER <no-reply@irrelevant.com>' \
+        -F to=TEAM_MAIL -F subject='[CI] BUILD FAILED!' \
         -F text='Your build has failed'
     fi
     cd ..
