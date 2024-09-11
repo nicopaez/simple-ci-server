@@ -4,6 +4,9 @@ set -x
 
 echo "building...."
 
+echo "getting dependencies"
+bundle install
+
 echo "verifying coding conventions"
 rubocop
 
